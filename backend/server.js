@@ -57,7 +57,16 @@ app.post('/submit', (req, requireVal) => {
     });
 });
 
+// Serve frontend files
+
+app.use(express.static(path.join(__dirname, '../')));
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../index.html'));
+});
+
 // 4. Start listening for server connections
 app.listen(PORT, () => {
     console.log(`EarnTech active platform server operating securely on http://localhost:${PORT}`);
 });
+
