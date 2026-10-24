@@ -1,0 +1,14 @@
+{
+  "name": "earntech",
+  "version": "1.0.0",
+  "description": "Futuristic Dark-Tech Glassmorphism Earning Ecosystem",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "sqlite3": "^5.1.7"
+  }
+}

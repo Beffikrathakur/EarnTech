@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EarnTech - Smart Financial Ecosystem</title>
+    <style>
+        @import url('https://googleapis.com');
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Plus Jakarta Sans',sans-serif; }
+        :root { --bg:#060913; --card:rgba(255,255,255,0.03); --border:rgba(255,255,255,0.08); --cyan:#00f2fe; --blue:#4facfe; --green:#00e676; }
+        body { background:var(--bg); color:#fff; overflow-x:hidden; min-height:100vh; display:flex; flex-direction:column; }
+        
+        /* Live Market Ticker */
+        .ticker-bar { background:rgba(0,0,0,0.6); border-bottom:1px solid var(--border); padding:8px 0; overflow:hidden; z-index:1001; position:relative; }
+        .ticker-track { display:flex; width:max-content; animation:scroll 30s linear infinite; }
+        .ticker-item { padding:0 30px; font-size:13px; font-weight:600; color:#a0aec0; letter-spacing:0.5px; }
+        .up { color:var(--green); } .down { color:#ff1744; }
+        @keyframes scroll { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
+
+        /* Navigation */
+        .navbar { display:flex; justify-content:space-between; align-items:center; padding:20px 5%; background:rgba(6,9,19,0.7); backdrop-filter:blur(12px); position:sticky; top:0; z-index:1000; border-bottom:1px solid var(--border); }
+        .logo { font-size:22px; font-weight:700; background:linear-gradient(45deg, var(--blue), var(--cyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+        .nav-links { display:flex; gap:30px; list-style:none; }
+        .nav-links a { color:#a0aec0; text-decoration:none; font-weight:500; font-size:15px; transition:0.3s; }
+        .nav-links a:hover, .nav-links a.active { color:var(--cyan); text-shadow:0 0 10px rgba(0,242,254,0.4); }
+
+        /* Main Scrollable Layout */
+        .container { max-width:1200px; margin:50px auto; padding:0 20px; flex:1; }
+        .glass-card { background:var(--card); border:1px solid var(--border); backdrop-filter:blur(20px); border-radius:24px; padding:60px 40px; box-shadow:0 20px 50px rgba(0,0,0,0.5); text-align:center; position:relative; overflow:hidden; }
+        .glass-card::before { content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:radial-gradient(circle, rgba(79,172,254,0.05) 0%, transparent 60%); pointer-events:none; }
+
+        /* Dynamic Typography */
+        .hero-title { font-size:45px; font-weight:700; line-height:1.3; margin-bottom:20px; background:linear-gradient(#fff, #a0aec0); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+        .ticker-text-box { height:40px; margin-top:10px; }
+        .dynamic-txt { font-size:32px; font-weight:700; color:var(--cyan); text-shadow:0 0 15px rgba(0,242,254,0.3); border-right:3px solid var(--cyan); padding-right:5px; animation:blink 0.6s step-end infinite alternate; }
+        @keyframes blink { 50% { border-color:transparent; } }
+        .hero-p { color:#718096; max-width:600px; margin:25px auto; font-size:16px; line-height:1.6; }
+
+        /* Real-Time Market Overview Widget */
+        .market-widget { margin-top:40px; display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:20px; text-align:left; }
+        .stat-card { background:rgba(255,255,255,0.02); border:1px solid var(--border); padding:20px; border-radius:16px; transition:0.3s; }
+        .stat-card:hover { transform:translateY(-5px); border-color:var(--blue); }
+        .stat-title { font-size:12px; color:#718096; text-transform:uppercase; letter-spacing:1px; margin-bottom:5px; }
+        .stat-value { font-size:24px; font-weight:700; }
+
+        /* Button CTA */
+        .btn-glow { background:linear-gradient(45deg, var(--blue), var(--cyan)); border:none; padding:15px 35px; color:#060913; font-weight:700; font-size:16px; border-radius:12px; cursor:pointer; box-shadow:0 0 20px rgba(0,242,254,0.4); transition:0.3s; margin-top:15px; }
+        .btn-glow:hover { transform:scale(1.03); box-shadow:0 0 30px rgba(0,242,254,0.6); }
+
+        /* Footer */
+        footer { border-top:1px solid var(--border); padding:25px; text-align:center; color:#4a5568; font-size:14px; background:rgba(4,6,12,0.9); }
+    </style>
+</head>
+<body>
+
+    <!-- Live India Market Ticker System -->
+    <div class="ticker-bar">
+        <div class="ticker-track" id="ticker-live">
+            <!-- JavaScript dynamically loops items here to prevent text breakage -->
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="logo">EarnTech</div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="skills.html">Skills</a></li>
+            <li><a href="opportunities.html">Opportunities</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Interactive Glassmorphic Content Container -->
+    <main class="container">
+        <div class="glass-card">
+            <h1 class="hero-title">Accelerate Your Financial Vision</h1>
+            <div class="ticker-text-box">
+                <span class="dynamic-txt" id="auto-script"></span>
+            </div>
+            <p class="hero-p">Connect into India's smart earning micro-systems. Track high-velocity global trends, acquire premium computational skills, and leverage AI tech scripts to deploy multiple monetization funnels.</p>
+            <button class="btn-glow" onclick="location.href='opportunities.html'">Enter Earning Hub</button>
+
+            <!-- Embedded Live India Market Show Dashboard Widget -->
+            <div class="market-widget">
+                <div class="stat-card">
+                    <div class="stat-title">Nifty 50 Index</div>
+                    <div class="stat-value up" id="m-nifty">24,210.50</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Sensex India</div>
+                    <div class="stat-value up" id="m-sensex">79,430.20</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">EarnTech Token</div>
+                    <div class="stat-value up" id="m-et">4.85 USD</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Active Indian Learners</div>
+                    <div class="stat-value" id="m-users" style="color:var(--cyan)">1,42,840</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 EarnTech Network. Crafted for High Performance. | <a href="privacy.html" style="color:#4a5568; text-decoration:none;">Privacy Policy</a></p>
+    </footer>
+
+    <!-- Performance Logic Script -->
+    <script>
+        // 1. High Velocity Auto Script Words Machine
+        const scripts = ["You are at the right place.", "Your time is our valuable asset.", "Build. Scale. Automate. Earn."];
+        let idx = 0, charIdx = 0, isDeleting = false, targetNode = document.getElementById("auto-script");
+
+        function playScript() {
+            let currentStr = scripts[idx];
+            if (isDeleting) {
+                targetNode.textContent = currentStr.substring(0, charIdx - 1);
+                charIdx--;
+            } else {
+                targetNode.textContent = currentStr.substring(0, charIdx + 1);
+                charIdx++;
+            }
+
+            let speed = isDeleting ? 40 : 80;
+            if (!isDeleting && charIdx === currentStr.length) {
+                speed = 2000; isDeleting = true;
+            } else if (isDeleting && charIdx === 0) {
+                isDeleting = false; idx = (idx + 1) % scripts.length; speed = 400;
+            }
+            setTimeout(playScript, speed);
+        }
+
+        // 2. Continuous Feed Infrastructure Generator (Ticker Clone)
+        const marketData = [
+            '🇮🇳 NIFTY 50: <span class="up">24,210.50 (+1.2%)</span>',
+            'BSE SENSEX: <span class="up">79,430.20 (+0.95%)</span>',
+            'EARNTECH TOKEN: <span class="up">$4.85 (+12.4%)</span>',
+            'AI GIG VOLUME: <span class="up">HIGH 🔥</span>',
+            'INR/USD: <span class="down">84.12 (-0.05%)</span>'
+        ];
+        const tickerNode = document.getElementById("ticker-live");
+        tickerNode.innerHTML = marketData.map(item => `<div class="ticker-item">${item}</div>`).join('').repeat(4);
+
+        // 3. Fluctuating Live India Market Dashboard Simulation Engine 
+        function simulateMarket() {
+            let nifty = (24200 + Math.random() * 40).toFixed(2);
+            let sensex = (79400 + Math.random() * 120).toFixed(2);
+            let token = (4.80 + Math.random() * 0.15).toFixed(2);
+            let users = parseInt(142840 + Math.random() * 15);
+
+            document.getElementById("m-nifty").textContent = nifty;
+            document.getElementById("m-sensex").textContent = sensex;
+            document.getElementById("m-et").textContent = token + " USD";
+            document.getElementById("m-users").textContent = users.toLocaleString('en-IN');
+            setTimeout(simulateMarket, 3000);
+        }
+
+        // Initialize Engines
+        document.addEventListener("DOMContentLoaded", () => {
+            playScript();
+            simulateMarket();
+        });
+    </script>
+</body>
+</html>

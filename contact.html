@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect with Us - EarnTech</title>
+    <style>
+        @import url('https://googleapis.com');
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Plus Jakarta Sans',sans-serif; }
+        :root { --bg:#060913; --card:rgba(255,255,255,0.03); --border:rgba(255,255,255,0.08); --cyan:#00f2fe; --blue:#4facfe; --green:#00e676; --amber:#ffb300; }
+        body { background:var(--bg); color:#fff; overflow-x:hidden; min-height:100vh; display:flex; flex-direction:column; }
+        
+        /* Queue Telemetry Status Bar */
+        .status-bar { background:rgba(0,0,0,0.5); border-bottom:1px solid var(--border); padding:10px 5%; display:flex; justify-content:space-between; font-size:13px; color:#a0aec0; }
+        .queue-node { display:flex; align-items:center; gap:8px; font-weight:600; }
+        .pulse-orange { width:8px; height:8px; background:var(--amber); border-radius:50%; box-shadow:0 0 10px var(--amber); animation:pulseGlow 1.5s infinite alternate; }
+        @keyframes pulseGlow { 0% { opacity:0.4; } 100% { opacity:1; } }
+
+        /* Navigation Header */
+        .navbar { display:flex; justify-content:space-between; align-items:center; padding:20px 5%; background:rgba(6,9,19,0.7); backdrop-filter:blur(12px); position:sticky; top:0; z-index:1000; border-bottom:1px solid var(--border); }
+        .logo { font-size:22px; font-weight:700; background:linear-gradient(45deg, var(--blue), var(--cyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+        .nav-links { display:flex; gap:30px; list-style:none; }
+        .nav-links a { color:#a0aec0; text-decoration:none; font-weight:500; font-size:15px; transition:0.3s; }
+        .nav-links a:hover, .nav-links a.active { color:var(--cyan); text-shadow:0 0 10px rgba(0,242,254,0.4); }
+
+        /* Form Canvas Content Layout */
+        .container { max-width:1200px; margin:40px auto; padding:0 20px; flex:1; display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:30px; }
+        .glass-card { background:var(--card); border:1px solid var(--border); backdrop-filter:blur(20px); border-radius:24px; padding:40px; box-shadow:0 20px 50px rgba(0,0,0,0.5); }
+        
+        .section-title { font-size:32px; font-weight:700; background:linear-gradient(#fff, #a0aec0); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:10px; }
+        .section-desc { color:#718096; font-size:15px; margin-bottom:30px; line-height:1.5; }
+
+        /* Input Form Elements styling */
+        .form-group { margin-bottom:20px; position:relative; }
+        .form-group label { display:block; font-size:12px; font-weight:600; text-transform:uppercase; color:#a0aec0; margin-bottom:8px; letter-spacing:0.5px; }
+        .form-group input, .form-group textarea { width:100%; padding:14px; background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:12px; color:#fff; font-size:15px; outline:none; transition:0.3s; }
+        .form-group input:focus, .form-group textarea:focus { border-color:var(--cyan); box-shadow:0 0 10px rgba(0,242,254,0.15); background:rgba(255,255,255,0.04); }
+        
+        /* Action Dispatcher Button */
+        .btn-submit { width:100%; background:linear-gradient(45deg, var(--blue), var(--cyan)); border:none; padding:15px; color:#060913; font-weight:700; font-size:15px; border-radius:12px; cursor:pointer; box-shadow:0 0 20px rgba(0,242,254,0.3); transition:0.3s; }
+        .btn-submit:hover { transform:translateY(-2px); box-shadow:0 0 30px rgba(0,242,254,0.5); }
+        .btn-submit:disabled { background:#4a5568; color:#a0aec0; cursor:not-allowed; box-shadow:none; transform:none; }
+
+        /* Communication Node Side Info */
+        .info-card { display:flex; flex-direction:column; justify-content:space-between; gap:25px; }
+        .meta-box { background:rgba(255,255,255,0.01); border:1px solid var(--border); padding:25px; border-radius:16px; }
+        .meta-heading { font-size:16px; font-weight:700; color:var(--cyan); margin-bottom:10px; }
+        .meta-detail { font-size:14px; color:#a0aec0; line-height:1.6; }
+
+        /* Footer */
+        footer { border-top:1px solid var(--border); padding:25px; text-align:center; color:#4a5568; font-size:14px; background:rgba(4,6,12,0.9); margin-top:40px; }
+    </style>
+</head>
+<body>
+
+    <!-- Live System Support Counter -->
+    <div class="status-bar">
+        <div class="queue-node"><div class="pulse-orange"></div> Live Helpdesk Load: <span style="color:#fff;" id="queue-status">Processing (4 min wait)</span></div>
+        <div>Encryption Node: <span style="color:var(--green);">AES-256 Active</span></div>
+    </div>
+
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="logo">EarnTech</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="skills.html">Skills</a></li>
+            <li><a href="opportunities.html">Opportunities</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Content Matrix Container -->
+    <main class="container">
+        <!-- Secure Contact Box Form -->
+        <div class="glass-card">
+            <h1 class="section-title">Secure Dispatch</h1>
+            <p class="section-desc">Transmit encrypted project queries or technical ecosystem assistance signals directly into our routing systems.</p>
+            
+            <form id="contact-form" onsubmit="handleSecureSubmit(event)">
+                <div class="form-group">
+                    <label>Identity / Full Name</label>
+                    <input type="text" id="name" placeholder="e.g., Rohan Sharma" required>
+                </div>
+                <div class="form-group">
+                    <label>Digital Mailpoint (Email)</label>
+                    <input type="email" id="email" placeholder="name@domain.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Ecosystem Core Message</label>
+                    <textarea id="message" rows="4" placeholder="Detail your project scope or learning barrier..." required></textarea>
+                </div>
+                <button type="submit" class="btn-submit" id="submit-btn">Initialize Connection</button>
+            </form>
+        </div>
+
+        <!-- System Meta Telemetry Info Card -->
+        <div class="info-card">
+            <div class="glass-card meta-box" style="flex:1;">
+                <div class="meta-heading">⚡ Automated Inbound Sync</div>
+                <div class="meta-detail">Every request registers a micro-ticket across our dashboard arrays. Expect fully decentralized feedback loops without third-party middleware monitoring delay.</div>
+            </div>
+            <div class="glass-card meta-box" style="flex:1;">
+                <div class="meta-heading">🌐 Hub Protocols</div>
+                <div class="meta-detail"><strong>Operational Nodes:</strong> New Delhi / Bengaluru Grid<br><strong>System Inbound:</strong> contact@earntech.network<br><strong>Status Framework:</strong> 24/7/365 Script Monitoring</div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 EarnTech Network. Crafted for High Performance. | <a href="privacy.html" style="color:#4a5568; text-decoration:none;">Privacy Policy</a></p>
+    </footer>
+
+    <!-- Form Response Engine Script -->
+    <script>
+        // 1. Live Dynamic Load Calculator
+        function dynamicQueueLoad() {
+            const statuses = ["Instant Connectivity (0 min wait)", "Optimal Load (2 min wait)", "Processing (4 min wait)"];
+            let randomIdx = Math.floor(Math.random() * statuses.length);
+            document.getElementById("queue-status").textContent = statuses[randomIdx];
+            setTimeout(dynamicQueueLoad, 6000);
+        }
+
+        // 2. Mock Transmission Handler
+        function handleSecureSubmit(event) {
+            event.preventDefault();
+            const btn = document.getElementById("submit-btn");
+            btn.disabled = true;
+            btn.textContent = "Encrypting Data Packets...";
+            
+            setTimeout(() => {
+                btn.style.background = "var(--green)";
+                btn.textContent = "✓ Signals Dispatched Successfully";
+                document.getElementById("contact-form").reset();
+            }, 1800);
+        }
+
+        document.addEventListener("DOMContentLoaded", dynamicQueueLoad);
+    </script>
+</body>
+</html>

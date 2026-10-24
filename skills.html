@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills Development Hub - EarnTech</title>
+    <style>
+        @import url('https://googleapis.com');
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Plus Jakarta Sans',sans-serif; }
+        :root { --bg:#060913; --card:rgba(255,255,255,0.03); --border:rgba(255,255,255,0.08); --cyan:#00f2fe; --blue:#4facfe; --green:#00e676; --purple:#7f00ff; }
+        body { background:var(--bg); color:#fff; overflow-x:hidden; min-height:100vh; display:flex; flex-direction:column; }
+        
+        /* Top Utility Status Bar */
+        .status-bar { background:rgba(0,0,0,0.4); border-bottom:1px solid var(--border); padding:10px 5%; display:flex; justify-content:space-between; font-size:12px; color:#a0aec0; font-weight:600; }
+        .live-node { display:flex; align-items:center; gap:8px; }
+        .pulse-dot { width:8px; height:8px; background:var(--green); border-radius:50%; box-shadow:0 0 8px var(--green); animation:pulse 1.5s infinite; }
+        @keyframes pulse { 0% { opacity:0.4; } 50% { opacity:1; } 100% { opacity:0.4; } }
+
+        /* Navigation Header */
+        .navbar { display:flex; justify-content:space-between; align-items:center; padding:20px 5%; background:rgba(6,9,19,0.7); backdrop-filter:blur(12px); position:sticky; top:0; z-index:1000; border-bottom:1px solid var(--border); }
+        .logo { font-size:22px; font-weight:700; background:linear-gradient(45deg, var(--blue), var(--cyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+        .nav-links { display:flex; gap:30px; list-style:none; }
+        .nav-links a { color:#a0aec0; text-decoration:none; font-weight:500; font-size:15px; transition:0.3s; }
+        .nav-links a:hover, .nav-links a.active { color:var(--cyan); text-shadow:0 0 10px rgba(0,242,254,0.4); }
+
+        /* Scrollable Grid Canvas */
+        .container { max-width:1200px; margin:40px auto; padding:0 20px; flex:1; }
+        .glass-card { background:var(--card); border:1px solid var(--border); backdrop-filter:blur(20px); border-radius:24px; padding:45px 40px; box-shadow:0 20px 50px rgba(0,0,0,0.5); margin-bottom:30px; }
+        
+        .section-title { font-size:32px; font-weight:700; background:linear-gradient(135deg, #fff 30%, #a0aec0); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:10px; }
+        .section-desc { color:#718096; font-size:15px; margin-bottom:35px; }
+
+        /* Skill Multi-Grid Architecture */
+        .skills-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:25px; }
+        .skill-item { background:rgba(255,255,255,0.01); border:1px solid var(--border); padding:25px; border-radius:16px; transition:0.3s ease; position:relative; overflow:hidden; }
+        .skill-item:hover { transform:translateY(-5px); border-color:var(--cyan); background:rgba(255,255,255,0.02); }
+        
+        .skill-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; }
+        .skill-name { font-size:18px; font-weight:600; color:#fff; }
+        .badge { font-size:11px; padding:4px 10px; border-radius:20px; font-weight:700; text-transform:uppercase; }
+        .badge-cyan { background:rgba(0,242,254,0.1); color:var(--cyan); border:1px solid rgba(0,242,254,0.2); }
+        .badge-purple { background:rgba(127,0,255,0.1); color:#a855f7; border:1px solid rgba(127,0,255,0.2); }
+
+        /* Dynamic Progress Tracking Bars */
+        .progress-container { margin:20px 0 10px 0; }
+        .progress-label { display:flex; justify-content:space-between; font-size:13px; color:#718096; margin-bottom:6px; }
+        .progress-bar-bg { width:100%; height:6px; background:rgba(255,255,255,0.05); border-radius:10px; overflow:hidden; }
+        .progress-fill { height:100%; width:0%; border-radius:10px; transition:width 1.5s cubic-bezier(0.1, 0.8, 0.25, 1); }
+        .fill-cyan { background:linear-gradient(90deg, var(--blue), var(--cyan)); }
+        .fill-purple { background:linear-gradient(90deg, var(--purple), #a855f7); }
+
+        .market-metrics { display:flex; justify-content:space-between; margin-top:15px; font-size:13px; border-top:1px solid rgba(255,255,255,0.05); padding-top:12px; }
+        .metric-val { font-weight:600; color:var(--green); }
+
+        /* Footer */
+        footer { border-top:1px solid var(--border); padding:25px; text-align:center; color:#4a5568; font-size:14px; background:rgba(4,6,12,0.9); margin-top:auto; }
+    </style>
+</head>
+<body>
+
+    <!-- Dynamic Status Bar -->
+    <div class="status-bar">
+        <div class="live-node"><div class="pulse-dot"></div> India Ecosystem Skill Index: <span style="color:#fff; margin-left:4px;">Optimal Matrix</span></div>
+        <div>Server Latency: <span style="color:var(--cyan);">14ms</span></div>
+    </div>
+
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="logo">EarnTech</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="skills.html" class="active">Skills</a></li>
+            <li><a href="opportunities.html">Opportunities</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Grid -->
+    <main class="container">
+        <div class="glass-card">
+            <h1 class="section-title">Computational Skill Architecture</h1>
+            <p class="section-desc">Acquire industrial high-velocity capabilities tracked by real-time freelance market valuations.</p>
+
+            <div class="skills-grid">
+                <!-- Skill Card 1 -->
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <div class="skill-name">AI Prompt Engineering</div>
+                        <span class="badge badge-cyan">Trending</span>
+                    </div>
+                    <p style="color:#718096; font-size:14px;">Automating full-scale text workflows, computational code structures and modern generative architectures.</p>
+                    <div class="progress-container">
+                        <div class="progress-label"><span>Current Demand Level</span><span class="demand-pct">94%</span></div>
+                        <div class="progress-bar-bg"><div class="progress-fill fill-cyan" data-width="94%"></div></div>
+                    </div>
+                    <div class="market-metrics">
+                        <span>Avg Freelance Value</span>
+                        <span class="metric-val" id="val-ai">₹3,400/hr</span>
+                    </div>
+                </div>
+
+                <!-- Skill Card 2 -->
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <div class="skill-name">Glassmorphic UI Systems</div>
+                        <span class="badge badge-purple">High Yield</span>
+                    </div>
+                    <p style="color:#718096; font-size:14px;">Designing clean interface systems using direct CSS glass overlays and premium UI/UX modern metrics.</p>
+                    <div class="progress-container">
+                        <div class="progress-label"><span>Current Demand Level</span><span class="demand-pct">88%</span></div>
+                        <div class="progress-bar-bg"><div class="progress-fill fill-purple" data-width="88%"></div></div>
+                    </div>
+                    <div class="market-metrics">
+                        <span>Avg Freelance Value</span>
+                        <span class="metric-val" id="val-ui">₹2,850/hr</span>
+                    </div>
+                </div>
+
+                <!-- Skill Card 3 -->
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <div class="skill-name">Automated Web Tickers</div>
+                        <span class="badge badge-cyan">Micro Asset</span>
+                    </div>
+                    <p style="color:#718096; font-size:14px;">Deploying algorithmic telemetry nodes that process high-speed dynamic feeds inside structural arrays.</p>
+                    <div class="progress-container">
+                        <div class="progress-label"><span>Current Demand Level</span><span class="demand-pct">82%</span></div>
+                        <div class="progress-bar-bg"><div class="progress-fill fill-cyan" data-width="82%"></div></div>
+                    </div>
+                    <div class="market-metrics">
+                        <span>Avg Freelance Value</span>
+                        <span class="metric-val" id="val-ticker">₹1,900/hr</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 EarnTech Network. Crafted for High Performance. | <a href="privacy.html" style="color:#4a5568; text-decoration:none;">Privacy Policy</a></p>
+    </footer>
+
+    <!-- Performance Rendering & Real-Time Adjustment Engine -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Animate progress lines smoothly on viewport load
+            setTimeout(() => {
+                document.querySelectorAll('.progress-fill').forEach(fill => {
+                    fill.style.width = fill.getAttribute('data-width');
+                });
+            }, 200);
+
+            // Live Valuation Fluctuations Simulator Engine
+            function liveSkillValuationEngine() {
+                let baseAI = (3350 + Math.random() * 120).toFixed(0);
+                let baseUI = (2800 + Math.random() * 90).toFixed(0);

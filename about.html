@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - EarnTech</title>
+    <!-- Relative path connecting to your global style sheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Shared Navigation Bar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Earn<span>Tech</span></a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link active">About</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="skills.html" class="nav-link">Skills</a></li>
+                <li><a href="opportunities.html" class="nav-link">Opportunities</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content Container Wrapper -->
+    <main class="container main-content">
+        
+        <!-- Main Company Profile Card -->
+        <section class="glass-card" style="margin-bottom: 30px;">
+            <h1 style="color: var(--accent-glow); margin-bottom: 15px;">Who We Are</h1>
+            <p>Welcome to <strong>EarnTech</strong>, where technology meets financial empowerment. We are dedicated to bridging the gap between cutting-edge technical skills and modern earning opportunities. Our platform serves as a launchpad for developers, creators, and professionals aiming to scale their careers in the digital economy.</p>
+        </section>
+
+        <!-- Dynamic Layout Setup for Mission & Vision side-by-side -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+            
+            <!-- Our Mission Component -->
+            <article class="glass-card">
+                <h2 style="color: var(--accent-success); margin-bottom: 10px;">Our Mission</h2>
+                <p>To democratize technical education and provide high-yielding professional tracks for learners globally, transforming raw skillsets into sustainable income engines.</p>
+            </article>
+
+            <!-- Our Vision Component -->
+            <article class="glass-card">
+                <h2 style="color: var(--accent-glow); margin-bottom: 10px;">Our Vision</h2>
+                <p>To build a decentralized ecosystem where anyone can prompt, code, deploy, and monetize their web ideas using production-ready cloud workflows instantly.</p>
+            </article>
+            
+        </div>
+
+    </main>
+
+    <!-- Shared Global Footer Structure -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 EarnTech. All rights reserved. | <a href="privacy.html" style="color: var(--text-muted); text-decoration: underline;">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <!-- Shared Client Interactivity Controller -->
+    <script src="js/main.js"></script>
+</body>
+</html>
